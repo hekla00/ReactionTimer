@@ -26,7 +26,9 @@ export default {
     },
     stopTimer() {
       clearInterval(this.timer);
-      console.log(this.reactionTime);
+      // this is done to send the data for the reactionTime to the app (parent component)
+      // after the data has been sent to the parent component other child components can use it
+      this.$emit("end", this.reactionTime);
     },
   },
 };

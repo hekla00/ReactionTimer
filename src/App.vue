@@ -1,7 +1,8 @@
 <template>
   <h1>Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">Play</button>
-  <Block v-if="isPlaying" v-bind:delay="delay"></Block>
+  <Block v-if="isPlaying" v-bind:delay="delay" @end="endGame"></Block>
+  <p v-if="showResults">Reaction time: {{ score }} ms</p>
 </template>
 
 <script>
@@ -13,6 +14,8 @@ export default {
     return {
       isPlaying: false,
       delay: null,
+      score: null,
+      showResults: false,
     };
   },
   methods: {
@@ -21,6 +24,13 @@ export default {
       this.delay = 2000 + Math.random() * 5000;
       this.isPlaying = true;
       console.log(this.delay);
+      this.showResults = false;
+    },
+    // after doing this method we get access to the reactionTime data from the block component
+    endGame(reactionTime) {
+      this.score = reactionTime;
+      this.isPlaying = false;
+      this.showResults = true;
     },
   },
 };
