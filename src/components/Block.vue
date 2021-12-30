@@ -38,7 +38,7 @@ export default {
 .block {
   width: 400px;
   border-radius: 20px;
-  background: #f1c4dc;
+  background: #eed0e0;
   color: white;
   text-align: center;
   padding: 100px 0;
